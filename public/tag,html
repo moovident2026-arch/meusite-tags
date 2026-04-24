@@ -1,0 +1,104 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Objeto Encontrado</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    h1 { color: #22c55e; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h1>🔍 Objeto Encontrado!</h1>
+  <p id="nome"></p>
+  <p id="telefone"></p>
+  <p id="cidade"></p>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const codigo = params.get('codigo');
+
+fetch(`/tag/${codigo}`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('nome').innerText = "Nome: " + data.nome;
+    document.getElementById('telefone').innerText = "Telefone: " + data.telefone;
+    document.getElementById('cidade').innerText = "Cidade: " + data.cidade;
+  })
+  .catch(() => {
+    document.body.innerHTML = "<h1>Tag não encontrada</h1>";
+  });
+</script>
+
+</body>
+=======
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Objeto Encontrado</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    h1 { color: #22c55e; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h1>🔍 Objeto Encontrado!</h1>
+  <p id="nome"></p>
+  <p id="telefone"></p>
+  <p id="cidade"></p>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const codigo = params.get('codigo');
+
+fetch(`/tag/${codigo}`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('nome').innerText = "Nome: " + data.nome;
+    document.getElementById('telefone').innerText = "Telefone: " + data.telefone;
+    document.getElementById('cidade').innerText = "Cidade: " + data.cidade;
+  })
+  .catch(() => {
+    document.body.innerHTML = "<h1>Tag não encontrada</h1>";
+  });
+</script>
+
+</body>
+>>>>>>> e89eb6421e468d50ea3f326b51dc1eb7e3768805
+</html>

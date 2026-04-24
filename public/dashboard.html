@@ -1,0 +1,208 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Minhas TAGs</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #0b1220, #111827);
+  color:white;
+}
+
+.container {
+  max-width:800px;
+  margin:auto;
+  padding:20px;
+}
+
+.card {
+  background:#111827;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:10px;
+}
+
+button {
+  padding:10px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.cancel {
+  background:#ef4444;
+  color:white;
+}
+
+.active {
+  color:#22c55e;
+}
+
+.inactive {
+  color:#ef4444;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Minhas TAGs</h1>
+
+  <div id="list"></div>
+</div>
+
+<script>
+const userId = localStorage.getItem("userId");
+
+if (!userId) {
+  alert("Faça login primeiro");
+  window.location.href = "/login.html";
+}
+
+async function load() {
+  const res = await fetch("http://localhost:3000/my-tags/" + userId);
+  const data = await res.json();
+
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  data.forEach(tag => {
+    list.innerHTML += `
+      <div class="card">
+        <strong>${tag.tag}</strong><br>
+        ${tag.object}<br>
+        Status: <span class="${tag.active ? 'active' : 'inactive'}">
+          ${tag.active ? 'Ativa' : 'Cancelada'}
+        </span><br>
+
+        ${tag.active ? `<button class="cancel" onclick="cancelTag('${tag.tag}')">Cancelar TAG</button>` : ''}
+      </div>
+    `;
+  });
+}
+
+async function cancelTag(tag) {
+  await fetch("http://localhost:3000/cancel-tag", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ tag })
+  });
+
+  load();
+}
+
+load();
+</script>
+
+</body>
+=======
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Minhas TAGs</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #0b1220, #111827);
+  color:white;
+}
+
+.container {
+  max-width:800px;
+  margin:auto;
+  padding:20px;
+}
+
+.card {
+  background:#111827;
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:10px;
+}
+
+button {
+  padding:10px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.cancel {
+  background:#ef4444;
+  color:white;
+}
+
+.active {
+  color:#22c55e;
+}
+
+.inactive {
+  color:#ef4444;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Minhas TAGs</h1>
+
+  <div id="list"></div>
+</div>
+
+<script>
+const userId = localStorage.getItem("userId");
+
+if (!userId) {
+  alert("Faça login primeiro");
+  window.location.href = "/login.html";
+}
+
+async function load() {
+  const res = await fetch("http://localhost:3000/my-tags/" + userId);
+  const data = await res.json();
+
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  data.forEach(tag => {
+    list.innerHTML += `
+      <div class="card">
+        <strong>${tag.tag}</strong><br>
+        ${tag.object}<br>
+        Status: <span class="${tag.active ? 'active' : 'inactive'}">
+          ${tag.active ? 'Ativa' : 'Cancelada'}
+        </span><br>
+
+        ${tag.active ? `<button class="cancel" onclick="cancelTag('${tag.tag}')">Cancelar TAG</button>` : ''}
+      </div>
+    `;
+  });
+}
+
+async function cancelTag(tag) {
+  await fetch("http://localhost:3000/cancel-tag", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ tag })
+  });
+
+  load();
+}
+
+load();
+</script>
+
+</body>
+>>>>>>> e89eb6421e468d50ea3f326b51dc1eb7e3768805
+</html>

@@ -1,0 +1,394 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Devolva Aqui</title>
+<style>
+body { margin:0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #0b1220, #111827); color:white; line-height: 1.6; }
+.top-bar { background:#22c55e; text-align:center; padding:10px; font-weight:bold; color:#022c22; }
+.header { display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:#020617; }
+.logo { height:150px; }
+.nav a { margin-left:15px; text-decoration:none; color:white; font-weight:bold; }
+.container { max-width:1100px; margin:auto; padding:30px; }
+
+/* --- TÍTULOS E SLOGAN --- */
+.title { text-align:center; margin-bottom:5px; font-size: 42px; font-weight: 800; }
+.slogan { text-align: center; color: #22c55e; font-size: 22px; font-style: italic; margin-bottom: 15px; font-weight: 300; }
+.subtitle { text-align:center; margin-bottom:40px; color:#9ca3af; font-size: 18px; }
+
+/* --- SEÇÃO INTRODUÇÃO --- */
+.intro-section { text-align: center; max-width: 800px; margin: 0 auto 60px auto; font-size: 18px; }
+.intro-section h2 { color: #22c55e; font-size: 28px; margin-bottom: 20px; }
+.highlight { color: #22c55e; font-weight: bold; }
+
+/* --- COMO FUNCIONA (PASSOS) --- */
+.how-it-works { display: flex; gap: 20px; justify-content: space-between; margin-bottom: 60px; flex-wrap: wrap; }
+.step { background: #1f2937; padding: 25px; border-radius: 15px; width: 30%; text-align: center; border: 1px solid #374151; transition: 0.3s; }
+.step:hover { border-color: #22c55e; transform: translateY(-5px); }
+.step-number { background: #22c55e; color: #022c22; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; font-weight: bold; font-size: 20px; }
+.step h3 { margin-bottom: 10px; color: #fff; }
+
+/* --- ONDE COLAR (GRID) --- */
+.usage-section { margin-bottom: 60px; text-align: center; }
+.usage-section h2 { color: #22c55e; font-size: 28px; margin-bottom: 30px; }
+.usage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.usage-card { background: #111827; padding: 20px; border-radius: 12px; border-left: 4px solid #22c55e; text-align: left; transition: 0.3s; }
+.usage-card:hover { background: #1f2937; }
+.usage-card h4 { margin: 0 0 10px 0; color: #22c55e; font-size: 18px; }
+.usage-card p { margin: 0; font-size: 15px; color: #d1d5db; }
+
+/* --- INSTALAÇÃO E SEGURANÇA --- */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 60px; }
+.info-box { background: #1f2937; padding: 30px; border-radius: 15px; border: 1px solid #374151; }
+.info-box h3 { color: #22c55e; margin-top: 0; }
+.info-box ul { padding-left: 20px; color: #d1d5db; }
+.info-box li { margin-bottom: 10px; }
+
+/* --- CARDS DE PRODUTO --- */
+.cards { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; margin-top: 40px; }
+.card { background:#1f2937; padding:20px; border-radius:12px; width:300px; text-align:center; position:relative; border: 1px solid #374151; transition: 0.3s; overflow: hidden; }
+.card:hover { border-color: #22c55e; transform: translateY(-5px); }
+.badge { position:absolute; top:-5px; right:-5px; background:#22c55e; color:#022c22; padding:6px 12px; font-size:12px; font-weight:bold; border-radius:8px; z-index: 10; box-shadow: 0 0 10px #22c55e; animation: pulse-glow 1.5s infinite; }
+@keyframes pulse-glow { 0% { transform: scale(1); box-shadow: 0 0 5px #22c55e; } 50% { transform: scale(1.1); box-shadow: 0 0 20px #22c55e, 0 0 30px #22c55e; } 100% { transform: scale(1); box-shadow: 0 0 5px #22c55e; } }
+.card img { width: 115%; margin-left: -7.5%; border-radius:10px; margin-bottom:15px; transition: 0.3s; transform: scale(1.1); }
+.card:hover img { transform: scale(1.2); }
+.price-old { text-decoration:line-through; color:#6b7280; font-size: 16px; margin-bottom: 0; }
+.price-new { font-size: 32px; color:#22c55e; font-weight: 800; margin-top: 5px; text-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
+button { margin-top:15px; padding:15px; width:100%; border:none; border-radius:8px; background:#22c55e; color:white; font-size:18px; font-weight: bold; cursor:pointer; transition:0.2s; }
+button:hover { background: #16a34a; transform:scale(1.05); }
+
+footer { text-align: center; padding: 40px 20px; background: #020617; color: #9ca3af; font-size: 14px; margin-top: 50px; border-top: 1px solid #1f2937; }
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+    .how-it-works, .info-grid { grid-template-columns: 1fr; display: block; }
+    .step { width: 100%; margin-bottom: 20px; }
+    .info-box { margin-bottom: 20px; }
+    .title { font-size: 30px; }
+}
+</style>
+</head>
+<body>
+<div class="top-bar">🚚 FRETE GRÁTIS PARA TODO O BRASIL — PRÉ-VENDA</div>
+<div class="header">
+  <img src="/img/logo.png" class="logo">
+  <div class="nav">
+    <a href="/login.html">Entrar</a>
+    <a href="/register.html">Cadastrar Tag</a>
+    <a href="/politica.html">Política de Uso</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1 class="title">Nunca mais perca seus objetos</h1>
+  <p class="slogan">Moovi. Mudamos conceitos, movemos o mundo!</p>
+  <p class="subtitle">Entrega estimada: De 30 a 40 dias úteis</p>
+
+  <!-- SEÇÃO INTRODUÇÃO -->
+  <div class="intro-section">
+    <h2>🏷️ Devolva Aqui: Onde a Tecnologia encontra a Honestidade.</h2>
+    <p>Você já sentiu aquele frio na espinha ao perceber que sua garrafa térmica ficou na academia? Ou que o carregador do notebook decidiu morar no café da esquina?</p>
+    <p>Nós criamos a <span class="highlight">Devolva Aqui</span>: a menor tag do mundo para os maiores esquecidos. Com apenas 2,5mm x 12mm, ela é minúscula no tamanho, mas gigante na missão de trazer seus pertences de volta para casa.</p>
+  </div>
+
+  <!-- SEÇÃO COMO FUNCIONA -->
+  <div class="usage-section">
+    <h2>🧠 Como funciona o "GPS da Honestidade"?</h2>
+    <div class="how-it-works">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Cole</h3>
+        <p>Escolha o objeto (da haste do óculos ao cartão do banco).</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Cadastre</h3>
+        <p>Vá no site, digite o código da sua tag e vincule ao seu objeto.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Respire</h3>
+        <p>Se perder, quem encontrar digita o código e... PLIM! O contato acontece de forma segura.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO ONDE COLAR -->
+  <div class="usage-section">
+    <h2>📖 Manual de Onde Colar</h2>
+    <div class="usage-grid">
+      <div class="usage-card">
+        <h4>💻 Reino da Tech</h4>
+        <p>Carregadores, fones de ouvido e até no verso do cartão de banco.</p>
+      </div>
+      <div class="usage-card">
+        <h4>👓 Visão de Águia</h4>
+        <p>Parte interna da haste dos óculos. Discreto e salvador.</p>
+      </div>
+      <div class="usage-card">
+        <h4>☔ Kit Sobrevivência</h4>
+        <p>Guarda-chuvas, chaves, garrafas térmicas e copos.</p>
+      </div>
+      <div class="usage-card">
+        <h4>🎒 Missão Escolar</h4>
+        <p>Lancheiras e garrafas. Aguenta lavagens e o caos escolar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO INSTALAÇÃO E SEGURANÇA -->
+  <div class="info-grid">
+    <div class="info-box">
+      <h3>🛠️ Guia de Instalação</h3>
+      <ul>
+        <li><strong>Limpeza:</strong> Passe um paninho para remover gordura e poeira.</li>
+        <li><strong>Mira Laser:</strong> Posicione com calma, cole e pressione por alguns segundos.</li>
+        <li><strong>Ative:</strong> Não esqueça de cadastrar o código no site para funcionar!</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h3>🛡️ Segurança em Primeiro Lugar</h3>
+      <p>Nada de espalhar seu telefone por aí. Com a Devolva Aqui, seus dados ficam protegidos. Quem encontra vê apenas o caminho seguro para te devolver o que é seu.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO DE COMPRA (Agora no final para fechar a venda) -->
+  <div class="cards">
+    <div class="card">
+      <div class="badge">FRETE GRÁTIS</div>
+      <img src="/img/kit3.png">
+      <h3>Kit 3 Tags</h3>
+      <p class="price-old">R$ 18,90</p>
+      <p class="price-new">R$ 14,90</p>
+      <button onclick="irParaCadastro('kit3')">Comprar agora</button>
+    </div>
+    <div class="card">
+      <div class="badge">FRETE GRÁTIS</div>
+      <img src="/img/kit6.png">
+      <h3>Kit 6 Tags</h3>
+      <p class="price-old">R$ 31,90</p>
+      <p class="price-new">R$ 24,90</p>
+      <button onclick="irParaCadastro('kit6')">Comprar agora</button>
+    </div>
+    <div class="card">
+      <div class="badge">FRETE GRÁTIS</div>
+      <img src="/img/kit12.png">
+      <h3>Kit 12 Tags</h3>
+      <p class="price-old">R$ 49,90</p>
+      <p class="price-new">R$ 39,90</p>
+      <button onclick="irParaCadastro('kit12')">Comprar agora</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Devolva Aqui - Todos os direitos reservados</p>
+  <p>CNPJ: 65.844.964/0001-61</p>
+  <p>Contato: devolvaaquimooviid@gmail.com</p>
+</footer>
+
+<script>
+function irParaCadastro(produto) {
+  window.location.href = `/cadastro.html?produto=${produto}`;
+}
+</script>
+</body>
+=======
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Devolva Aqui</title>
+<style>
+body { margin:0; font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #0b1220, #111827); color:white; line-height: 1.6; }
+.top-bar { background:#22c55e; text-align:center; padding:10px; font-weight:bold; color:#022c22; }
+.header { display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:#020617; }
+.logo { height:150px; }
+.nav a { margin-left:15px; text-decoration:none; color:white; font-weight:bold; }
+.container { max-width:1100px; margin:auto; padding:30px; }
+
+/* --- TÍTULOS E SLOGAN --- */
+.title { text-align:center; margin-bottom:5px; font-size: 42px; font-weight: 800; }
+.slogan { text-align: center; color: #22c55e; font-size: 22px; font-style: italic; margin-bottom: 15px; font-weight: 300; }
+.subtitle { text-align:center; margin-bottom:40px; color:#9ca3af; font-size: 18px; }
+
+/* --- SEÇÃO INTRODUÇÃO --- */
+.intro-section { text-align: center; max-width: 800px; margin: 0 auto 60px auto; font-size: 18px; }
+.intro-section h2 { color: #22c55e; font-size: 28px; margin-bottom: 20px; }
+.highlight { color: #22c55e; font-weight: bold; }
+
+/* --- COMO FUNCIONA (PASSOS) --- */
+.how-it-works { display: flex; gap: 20px; justify-content: space-between; margin-bottom: 60px; flex-wrap: wrap; }
+.step { background: #1f2937; padding: 25px; border-radius: 15px; width: 30%; text-align: center; border: 1px solid #374151; transition: 0.3s; }
+.step:hover { border-color: #22c55e; transform: translateY(-5px); }
+.step-number { background: #22c55e; color: #022c22; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; font-weight: bold; font-size: 20px; }
+.step h3 { margin-bottom: 10px; color: #fff; }
+
+/* --- ONDE COLAR (GRID) --- */
+.usage-section { margin-bottom: 60px; text-align: center; }
+.usage-section h2 { color: #22c55e; font-size: 28px; margin-bottom: 30px; }
+.usage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.usage-card { background: #111827; padding: 20px; border-radius: 12px; border-left: 4px solid #22c55e; text-align: left; transition: 0.3s; }
+.usage-card:hover { background: #1f2937; }
+.usage-card h4 { margin: 0 0 10px 0; color: #22c55e; font-size: 18px; }
+.usage-card p { margin: 0; font-size: 15px; color: #d1d5db; }
+
+/* --- INSTALAÇÃO E SEGURANÇA --- */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 60px; }
+.info-box { background: #1f2937; padding: 30px; border-radius: 15px; border: 1px solid #374151; }
+.info-box h3 { color: #22c55e; margin-top: 0; }
+.info-box ul { padding-left: 20px; color: #d1d5db; }
+.info-box li { margin-bottom: 10px; }
+
+/* --- CARDS DE PRODUTO --- */
+.cards { display:flex; gap:20px; flex-wrap:wrap; justify-content:center; margin-top: 40px; }
+.card { background:#1f2937; padding:20px; border-radius:12px; width:300px; text-align:center; position:relative; border: 1px solid #374151; transition: 0.3s; overflow: hidden; }
+.card:hover { border-color: #22c55e; transform: translateY(-5px); }
+.badge { position:absolute; top:-5px; right:-5px; background:#22c55e; color:#022c22; padding:6px 12px; font-size:12px; font-weight:bold; border-radius:8px; z-index: 10; box-shadow: 0 0 10px #22c55e; animation: pulse-glow 1.5s infinite; }
+@keyframes pulse-glow { 0% { transform: scale(1); box-shadow: 0 0 5px #22c55e; } 50% { transform: scale(1.1); box-shadow: 0 0 20px #22c55e, 0 0 30px #22c55e; } 100% { transform: scale(1); box-shadow: 0 0 5px #22c55e; } }
+.card img { width: 115%; margin-left: -7.5%; border-radius:10px; margin-bottom:15px; transition: 0.3s; transform: scale(1.1); }
+.card:hover img { transform: scale(1.2); }
+.price-old { text-decoration:line-through; color:#6b7280; font-size: 16px; margin-bottom: 0; }
+.price-new { font-size: 32px; color:#22c55e; font-weight: 800; margin-top: 5px; text-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
+button { margin-top:15px; padding:15px; width:100%; border:none; border-radius:8px; background:#22c55e; color:white; font-size:18px; font-weight: bold; cursor:pointer; transition:0.2s; }
+button:hover { background: #16a34a; transform:scale(1.05); }
+
+footer { text-align: center; padding: 40px 20px; background: #020617; color: #9ca3af; font-size: 14px; margin-top: 50px; border-top: 1px solid #1f2937; }
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+    .how-it-works, .info-grid { grid-template-columns: 1fr; display: block; }
+    .step { width: 100%; margin-bottom: 20px; }
+    .info-box { margin-bottom: 20px; }
+    .title { font-size: 30px; }
+}
+</style>
+</head>
+<body>
+<div class="top-bar">🚚 FRETE GRÁTIS PARA TODO O BRASIL — PRÉ-VENDA</div>
+<div class="header">
+  <img src="/img/logo.png" class="logo">
+  <div class="nav">
+    <a href="/login.html">Entrar</a>
+    <a href="/register.html">Cadastrar Tag</a>
+    <a href="/politica.html">Política de Uso</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1 class="title">Nunca mais perca seus objetos</h1>
+  <p class="slogan">Moovi. Mudamos conceitos, movemos o mundo!</p>
+  <p class="subtitle">Entrega estimada: De 30 a 40 dias úteis</p>
+
+  <!-- SEÇÃO INTRODUÇÃO -->
+  <div class="intro-section">
+    <h2>🏷️ Devolva Aqui: Onde a Tecnologia encontra a Honestidade.</h2>
+    <p>Você já sentiu aquele frio na espinha ao perceber que sua garrafa térmica ficou na academia? Ou que o carregador do notebook decidiu morar no café da esquina?</p>
+    <p>Nós criamos a <span class="highlight">Devolva Aqui</span>: a menor tag do mundo para os maiores esquecidos. Com apenas 2,5mm x 12mm, ela é minúscula no tamanho, mas gigante na missão de trazer seus pertences de volta para casa.</p>
+  </div>
+
+  <!-- SEÇÃO COMO FUNCIONA -->
+  <div class="usage-section">
+    <h2>🧠 Como funciona o "GPS da Honestidade"?</h2>
+    <div class="how-it-works">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Cole</h3>
+        <p>Escolha o objeto (da haste do óculos ao cartão do banco).</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Cadastre</h3>
+        <p>Vá no site, digite o código da sua tag e vincule ao seu objeto.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Respire</h3>
+        <p>Se perder, quem encontrar digita o código e... PLIM! O contato acontece de forma segura.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO ONDE COLAR -->
+  <div class="usage-section">
+    <h2>📖 Manual de Onde Colar</h2>
+    <div class="usage-grid">
+      <div class="usage-card">
+        <h4>💻 Reino da Tech</h4>
+        <p>Carregadores, fones de ouvido e até no verso do cartão de banco.</p>
+      </div>
+      <div class="usage-card">
+        <h4>👓 Visão de Águia</h4>
+        <p>Parte interna da haste dos óculos. Discreto e salvador.</p>
+      </div>
+      <div class="usage-card">
+        <h4>☔ Kit Sobrevivência</h4>
+        <p>Guarda-chuvas, chaves, garrafas térmicas e copos.</p>
+      </div>
+      <div class="usage-card">
+        <h4>🎒 Missão Escolar</h4>
+        <p>Lancheiras e garrafas. Aguenta lavagens e o caos escolar.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO INSTALAÇÃO E SEGURANÇA -->
+  <div class="info-grid">
+    <div class="info-box">
+      <h3>🛠️ Guia de Instalação</h3>
+      <ul>
+        <li><strong>Limpeza:</strong> Passe um paninho para remover gordura e poeira.</li>
+        <li><strong>Mira Laser:</strong> Posicione com calma, cole e pressione por alguns segundos.</li>
+        <li><strong>Ative:</strong> Não esqueça de cadastrar o código no site para funcionar!</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h3>🛡️ Segurança em Primeiro Lugar</h3>
+      <p>Nada de espalhar seu telefone por aí. Com a Devolva Aqui, seus dados ficam protegidos. Quem encontra vê apenas o caminho seguro para te devolver o que é seu.</p>
+    </div>
+  </div>
+
+  <!-- SEÇÃO DE COMPRA (Agora no final para fechar a venda) -->
+  <div class="cards">
+    <div class="card">
+      <div class="badge">FRETE GRÁTIS</div>
+      <img src="/img/kit3.png">
+      <h3>Kit 3 Tags</h3>
+      <p class="price-old">R$ 18,90</p>
+      <p class="price-new">R$ 14,90</p>
+      <button onclick="irParaCadastro('kit3')">Comprar agora</button>
+    </div>
+    <div class="card">
+      <div class="badge">FRETE GRÁTIS</div>
+      <img src="/img/kit6.png">
+      <h3>Kit 6 Tags</h3>
+      <p class="price-old">R$ 31,90</p>
+      <p class="price-new">R$ 24,90</p>
+      <button onclick="irParaCadastro('kit6')">Comprar agora</button>
+    </div>
+    <div class="card">
+      <div class="badge">FRETE GRÁTIS</div>
+      <img src="/img/kit12.png">
+      <h3>Kit 12 Tags</h3>
+      <p class="price-old">R$ 49,90</p>
+      <p class="price-new">R$ 39,90</p>
+      <button onclick="irParaCadastro('kit12')">Comprar agora</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Devolva Aqui - Todos os direitos reservados</p>
+  <p>CNPJ: 65.844.964/0001-61</p>
+  <p>Contato: devolvaaquimooviid@gmail.com</p>
+</footer>
+
+<script>
+function irParaCadastro(produto) {
+  window.location.href = `/cadastro.html?produto=${produto}`;
+}
+</script>
+</body>
+>>>>>>> e89eb6421e468d50ea3f326b51dc1eb7e3768805
+</html>

@@ -1,0 +1,372 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Ativar TAG - Devolva Aqui</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0b1220, #111827);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card {
+  width:420px;
+  background:#111827;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.7);
+}
+
+h1 {
+  font-size:22px;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+input, select {
+  width:100%;
+  padding:14px;
+  margin:6px 0;
+  border:none;
+  border-radius:10px;
+  background:#1f2937;
+  color:white;
+  font-size:14px;
+}
+
+input::placeholder {
+  color:#9ca3af;
+}
+
+button {
+  width:100%;
+  padding:15px;
+  margin-top:10px;
+  background:#22c55e;
+  border:none;
+  border-radius:12px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+button:hover {
+  background:#16a34a;
+}
+
+.msg {
+  margin-top:15px;
+  text-align:center;
+  font-size:14px;
+}
+
+.hidden {
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Ativar sua TAG</h1>
+
+<input id="name" placeholder="Nome completo">
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Senha">
+
+<input id="tag" placeholder="Código da TAG (ex: DA-8F3K2L)">
+<input id="whatsapp" placeholder="WhatsApp (ex: 5548999999999)">
+
+<input id="birthdate" type="date">
+<input id="city" placeholder="Cidade">
+
+<select id="object" onchange="toggleOutro()">
+  <option value="">Selecione o objeto</option>
+  <option>Óculos</option>
+  <option>Chaves</option>
+  <option>Carteira</option>
+  <option>Celular</option>
+  <option>Relógio</option>
+  <option>Mochila</option>
+  <option>Bolsa</option>
+  <option>Documento</option>
+  <option>Notebook</option>
+  <option>Fone de ouvido</option>
+  <option>Guarda-chuva</option>
+  <option>Brinquedo</option>
+  <option>Carregador</option>
+  <option>Calçado</option>
+  <option>Cartões</option>
+  <option>Copo térmico</option>
+  <option>Garrafa térmica</option>
+  <option>Squeeze</option>
+  <option value="outro">Outro</option>
+</select>
+
+<input id="object_custom" class="hidden" placeholder="Digite o objeto">
+
+<button onclick="register()">Ativar TAG</button>
+
+<div id="msg" class="msg"></div>
+
+</div>
+
+<script>
+function toggleOutro() {
+  const obj = document.getElementById("object").value;
+  const campo = document.getElementById("object_custom");
+
+  if (obj === "outro") {
+    campo.classList.remove("hidden");
+  } else {
+    campo.classList.add("hidden");
+    campo.value = "";
+  }
+}
+
+async function register() {
+
+  const objectSelect = document.getElementById("object").value;
+  const objectCustom = document.getElementById("object_custom").value;
+
+  const object = objectSelect === "outro" ? objectCustom : objectSelect;
+
+  const msg = document.getElementById("msg");
+  msg.innerHTML = "Ativando...";
+
+  try {
+    const res = await fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+        tag: document.getElementById("tag").value,
+        whatsapp: document.getElementById("whatsapp").value,
+        birthdate: document.getElementById("birthdate").value,
+        city: document.getElementById("city").value,
+        object: object
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      msg.innerHTML = `<span style="color:#ef4444">${data.error}</span>`;
+      return;
+    }
+
+    msg.innerHTML = `
+      <span style="color:#22c55e">
+        ✔ TAG ativada com sucesso!<br><br>
+        Código: ${data.tag}
+      </span>
+    `;
+
+  } catch (err) {
+    msg.innerHTML = `<span style="color:#ef4444">Erro de conexão</span>`;
+  }
+}
+</script>
+
+</body>
+=======
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Ativar TAG - Devolva Aqui</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0b1220, #111827);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card {
+  width:420px;
+  background:#111827;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.7);
+}
+
+h1 {
+  font-size:22px;
+  text-align:center;
+  margin-bottom:20px;
+}
+
+input, select {
+  width:100%;
+  padding:14px;
+  margin:6px 0;
+  border:none;
+  border-radius:10px;
+  background:#1f2937;
+  color:white;
+  font-size:14px;
+}
+
+input::placeholder {
+  color:#9ca3af;
+}
+
+button {
+  width:100%;
+  padding:15px;
+  margin-top:10px;
+  background:#22c55e;
+  border:none;
+  border-radius:12px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+button:hover {
+  background:#16a34a;
+}
+
+.msg {
+  margin-top:15px;
+  text-align:center;
+  font-size:14px;
+}
+
+.hidden {
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Ativar sua TAG</h1>
+
+<input id="name" placeholder="Nome completo">
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Senha">
+
+<input id="tag" placeholder="Código da TAG (ex: DA-8F3K2L)">
+<input id="whatsapp" placeholder="WhatsApp (ex: 5548999999999)">
+
+<input id="birthdate" type="date">
+<input id="city" placeholder="Cidade">
+
+<select id="object" onchange="toggleOutro()">
+  <option value="">Selecione o objeto</option>
+  <option>Óculos</option>
+  <option>Chaves</option>
+  <option>Carteira</option>
+  <option>Celular</option>
+  <option>Relógio</option>
+  <option>Mochila</option>
+  <option>Bolsa</option>
+  <option>Documento</option>
+  <option>Notebook</option>
+  <option>Fone de ouvido</option>
+  <option>Guarda-chuva</option>
+  <option>Brinquedo</option>
+  <option>Carregador</option>
+  <option>Calçado</option>
+  <option>Cartões</option>
+  <option>Copo térmico</option>
+  <option>Garrafa térmica</option>
+  <option>Squeeze</option>
+  <option value="outro">Outro</option>
+</select>
+
+<input id="object_custom" class="hidden" placeholder="Digite o objeto">
+
+<button onclick="register()">Ativar TAG</button>
+
+<div id="msg" class="msg"></div>
+
+</div>
+
+<script>
+function toggleOutro() {
+  const obj = document.getElementById("object").value;
+  const campo = document.getElementById("object_custom");
+
+  if (obj === "outro") {
+    campo.classList.remove("hidden");
+  } else {
+    campo.classList.add("hidden");
+    campo.value = "";
+  }
+}
+
+async function register() {
+
+  const objectSelect = document.getElementById("object").value;
+  const objectCustom = document.getElementById("object_custom").value;
+
+  const object = objectSelect === "outro" ? objectCustom : objectSelect;
+
+  const msg = document.getElementById("msg");
+  msg.innerHTML = "Ativando...";
+
+  try {
+    const res = await fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+        tag: document.getElementById("tag").value,
+        whatsapp: document.getElementById("whatsapp").value,
+        birthdate: document.getElementById("birthdate").value,
+        city: document.getElementById("city").value,
+        object: object
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      msg.innerHTML = `<span style="color:#ef4444">${data.error}</span>`;
+      return;
+    }
+
+    msg.innerHTML = `
+      <span style="color:#22c55e">
+        ✔ TAG ativada com sucesso!<br><br>
+        Código: ${data.tag}
+      </span>
+    `;
+
+  } catch (err) {
+    msg.innerHTML = `<span style="color:#ef4444">Erro de conexão</span>`;
+  }
+}
+</script>
+
+</body>
+>>>>>>> e89eb6421e468d50ea3f326b51dc1eb7e3768805
+</html>

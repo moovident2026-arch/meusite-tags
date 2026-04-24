@@ -1,0 +1,326 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel Admin</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #0b1220, #111827);
+  color:white;
+}
+
+.container {
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
+
+h1 {
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.search {
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  margin-bottom:20px;
+}
+
+.card {
+  background:#1f2937;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.tag {
+  font-size:18px;
+  font-weight:bold;
+}
+
+button {
+  margin-top:10px;
+  padding:8px 12px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.cancel {
+  background:#ef4444;
+  color:white;
+}
+
+.activate {
+  background:#22c55e;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Painel Administrativo</h1>
+
+  <input 
+    class="search"
+    type="text" 
+    id="search" 
+    placeholder="Buscar por TAG, nome ou objeto..."
+    onkeyup="render()"
+  >
+
+  <div id="list"></div>
+</div>
+
+<script>
+let tags = [];
+
+/* NORMALIZA TEXTO */
+function normalize(text) {
+  return (text || "")
+    .toLowerCase()
+    .replace(/-/g, "")   // remove hífen
+    .replace(/\s/g, ""); // remove espaços
+}
+
+async function load() {
+  const res = await fetch("/admin/all");
+  tags = await res.json();
+  render();
+}
+
+function render() {
+  const searchRaw = document.getElementById("search").value;
+  const search = normalize(searchRaw);
+
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  tags
+    .filter(t => {
+      const tag = normalize(t.tag);
+      const name = normalize(t.name);
+      const object = normalize(t.object);
+
+      return (
+        tag.includes(search) ||
+        name.includes(search) ||
+        object.includes(search)
+      );
+    })
+    .forEach(t => {
+
+      list.innerHTML += `
+        <div class="card">
+          <div class="tag">${t.tag}</div>
+          <div>Objeto: ${t.object}</div>
+          <div>Usuário: ${t.name}</div>
+          <div>WhatsApp: ${t.whatsapp}</div>
+          <div>Status: ${t.active ? "Ativa" : "Cancelada"}</div>
+
+          ${
+            t.active
+              ? `<button class="cancel" onclick="cancelTag('${t.tag}')">Cancelar</button>`
+              : `<button class="activate" onclick="reactivateTag('${t.tag}')">Reativar</button>`
+          }
+        </div>
+      `;
+    });
+}
+
+async function cancelTag(tag) {
+  await fetch("/admin/cancel-tag", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ tag })
+  });
+
+  load();
+}
+
+async function reactivateTag(tag) {
+  await fetch("/admin/reactivate-tag", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ tag })
+  });
+
+  load();
+}
+
+load();
+</script>
+
+</body>
+=======
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Painel Admin</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #0b1220, #111827);
+  color:white;
+}
+
+.container {
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
+
+h1 {
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.search {
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  margin-bottom:20px;
+}
+
+.card {
+  background:#1f2937;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.tag {
+  font-size:18px;
+  font-weight:bold;
+}
+
+button {
+  margin-top:10px;
+  padding:8px 12px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.cancel {
+  background:#ef4444;
+  color:white;
+}
+
+.activate {
+  background:#22c55e;
+  color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Painel Administrativo</h1>
+
+  <input 
+    class="search"
+    type="text" 
+    id="search" 
+    placeholder="Buscar por TAG, nome ou objeto..."
+    onkeyup="render()"
+  >
+
+  <div id="list"></div>
+</div>
+
+<script>
+let tags = [];
+
+/* NORMALIZA TEXTO */
+function normalize(text) {
+  return (text || "")
+    .toLowerCase()
+    .replace(/-/g, "")   // remove hífen
+    .replace(/\s/g, ""); // remove espaços
+}
+
+async function load() {
+  const res = await fetch("/admin/all");
+  tags = await res.json();
+  render();
+}
+
+function render() {
+  const searchRaw = document.getElementById("search").value;
+  const search = normalize(searchRaw);
+
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  tags
+    .filter(t => {
+      const tag = normalize(t.tag);
+      const name = normalize(t.name);
+      const object = normalize(t.object);
+
+      return (
+        tag.includes(search) ||
+        name.includes(search) ||
+        object.includes(search)
+      );
+    })
+    .forEach(t => {
+
+      list.innerHTML += `
+        <div class="card">
+          <div class="tag">${t.tag}</div>
+          <div>Objeto: ${t.object}</div>
+          <div>Usuário: ${t.name}</div>
+          <div>WhatsApp: ${t.whatsapp}</div>
+          <div>Status: ${t.active ? "Ativa" : "Cancelada"}</div>
+
+          ${
+            t.active
+              ? `<button class="cancel" onclick="cancelTag('${t.tag}')">Cancelar</button>`
+              : `<button class="activate" onclick="reactivateTag('${t.tag}')">Reativar</button>`
+          }
+        </div>
+      `;
+    });
+}
+
+async function cancelTag(tag) {
+  await fetch("/admin/cancel-tag", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ tag })
+  });
+
+  load();
+}
+
+async function reactivateTag(tag) {
+  await fetch("/admin/reactivate-tag", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ tag })
+  });
+
+  load();
+}
+
+load();
+</script>
+
+</body>
+>>>>>>> e89eb6421e468d50ea3f326b51dc1eb7e3768805
+</html>
